@@ -14,9 +14,16 @@ app.get("/", (req, res) => {
   res.sendFile(join(__dirname, "main.html"));
 });
 
+app.get("/api", (req, res) => {
+  res.json({
+    ok: true,
+    message: "Working fine!",
+  });
+});
+
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
-    io.emit('chat message', msg);
+    io.emit("chat message", msg);
   });
 
   socket.on("disconnect", () => {
@@ -24,8 +31,8 @@ io.on("connection", (socket) => {
   });
 });
 
-// server.listen(3000, () => {
-//   console.log("server running at http://localhost:3000");
-// });
+server.listen(3000, () => {
+  console.log("server running at http://localhost:3000");
+});
 
-module.exports = server;
+// module.exports = server;
