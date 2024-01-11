@@ -10,7 +10,7 @@ const io = new Server(server);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-app.get("/view", (req, res) => {
+app.get("/api/view", (req, res) => {
   res.sendFile(join(__dirname, "main.html"));
 });
 
